@@ -6,6 +6,20 @@ import { AboutComponent } from './about/about.component';
 @Component({
   selector: 'app-root',
   imports: [AboutComponent, HeroComponent],
+import { JsonPipe } from '@angular/common';
+import {
+  sum,
+  formatText,
+  user1,
+  admin1,
+  users,
+  filteredUsers,
+  usersWithEmails,
+  usersStartingWithM,
+} from './training';
+@Component({
+  selector: 'app-root',
+  imports: [JsonPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -61,4 +75,11 @@ export class AppComponent {
     stringCollection.clear();
     console.log('После очистки:', stringCollection.getAll());
   }
+  myResult = sum(15, 25);
+
+  testUpper = formatText('привет, мир', 'uppercase');
+  testCapitalize = formatText('пРИВЕТ, мИР', 'capitalize');
+  myFilteredUsers = filteredUsers;
+  myUsersWithEmails = usersWithEmails;
+  myUsersStartingWithM = usersStartingWithM;
 }
